@@ -1,12 +1,5 @@
-import React from 'react';
-
-const UsersPage = () => {
-    return (
-        <div>
-            <h1>Users</h1>
-            <p>Manage your users here.</p>
-        </div>
-    );
-};
-
-export default UsersPage;
+export default function Page() {
+  return (
+    <main className="flex flex-col h-full  w-full gap-3 bg-gray-900/80 text-gray-100  ">Users</main>
+  );
+}

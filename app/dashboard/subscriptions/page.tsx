@@ -1,12 +1,9 @@
-import React from 'react';
-
-const SubscriptionsPage = () => {
+export default  function Page() {
+  
     return (
-        <div>
-            <h1>Subscriptions</h1>
-            <p>Manage your subscriptions here.</p>
-        </div>
+      <main className="flex flex-col h-full  w-full gap-3 bg-gray-900/80 text-gray-100  ">
+       Subcriptions
+      </main>
     );
-};
-
-export default SubscriptionsPage;
+  }
+  

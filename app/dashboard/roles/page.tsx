@@ -1,12 +1,9 @@
-import React from 'react';
-
-const Page = () => {
+export default  function Page() {
+  
     return (
-        <div>
-            <h1>Roles Management</h1>
-            <p>Manage user roles and permissions here.</p>
-        </div>
+      <main className="flex flex-col h-full  w-full gap-3 bg-gray-900/80 text-gray-100  ">
+       role
+      </main>
     );
-};
-
-export default Page;
+  }
+  
