@@ -3,7 +3,7 @@ import {DataType } from "@/app/lib/definitions";
 export const fetchData = async (): Promise<DataType[]> => {
     try {
      
-        const response = await fetch('https://retoolapi.dev/MuR3oJ/data');
+        const response = await fetch('https://retoolapi.dev/R2kCCX/data');
         
         if (!response.ok) {
             throw new Error(`Error fetching data: ${response.statusText}`);

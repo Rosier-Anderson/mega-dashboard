@@ -1,6 +1,8 @@
-// import { fetchData } from "../api/data/data";
 
-import ActiveUsers from "../ui/dashboard /TotalActiveUsers";
+import ActiveUsers from "../ui/dashboard /totalActiveUsers";
+import TotalCustomer from "../ui/dashboard /totalCustomer";
+import TotalRevenue from "../ui/dashboard /totalRevenue";
+import TotalSubscription from "../ui/dashboard /totalSuscription";
 
 
 export default async function Page() {
@@ -17,10 +19,10 @@ export default async function Page() {
         </h1>
       </div>
       <div className="flex flex-col gap-4 w-[96%] mx-auto lg:flex-row">
-       <ActiveUsers/>
-       <ActiveUsers/>
-       <ActiveUsers/>
-       <ActiveUsers/>
+        <ActiveUsers />
+        <TotalSubscription/>
+        <TotalRevenue/>
+        <TotalCustomer/>
       </div>
       <div>
         <h1>Recent users</h1>

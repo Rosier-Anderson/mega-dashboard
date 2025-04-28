@@ -1,18 +1,19 @@
 import { fetchData } from "@/app/api/data/data";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
-import React from "react";
 
-const ActiveUsers = async () => {
-  const activeUsers = await fetchData();
-  const totalActiveUsers = activeUsers.filter(user => user.active).length;
+const TotalCustomer = async () => {
+  const customers = await fetchData();
+  const totalCustomers = customers.length;
 
   return (
     <div className="flex justify-between items-start p-4 w-full h-24 bg-gray-700 rounded-md mt-4 shadow text-gray-200">
       <div>
-        <h2 className="text-gray-300 font-semibold text-lg">Active Users</h2>
-        <p className="text-white text-2xl font-bold">{totalActiveUsers}</p>
+        <h2 className="text-gray-300 font-semibold text-lg">Customers</h2>
+        <p className="text-white text-2xl font-bold">
+          {totalCustomers}
+        </p>
         <p className="text-sm text-gray-400 italic">
-          Active in the last 30 days
+          Total customers
         </p>
       </div>
 
@@ -23,4 +24,4 @@ const ActiveUsers = async () => {
   );
 };
 
-export default ActiveUsers;
+export default TotalCustomer;

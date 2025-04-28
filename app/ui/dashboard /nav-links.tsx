@@ -1,7 +1,7 @@
 'use client'
 import {
   UserGroupIcon,
-  HomeIcon,BanknotesIcon, ClipboardDocumentCheckIcon
+  HomeIcon, ClipboardDocumentCheckIcon, CreditCardIcon
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
  import { usePathname } from "next/navigation";
@@ -11,7 +11,7 @@ const links = [
   { name: "Dashboard", href: "/dashboard", icon: HomeIcon },
   { name: "Users", href: "/dashboard/users", icon:UserGroupIcon },
   { name: "Roles", href: "/dashboard/roles", icon: ClipboardDocumentCheckIcon },
-  { name: "Subscriptions", href: "/dashboard/subscriptions", icon: BanknotesIcon},
+  { name: "Subscriptions", href: "/dashboard/subscriptions", icon: CreditCardIcon},
 ];
 export default  function  Navlinks() {
   const pathname = usePathname();
