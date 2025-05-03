@@ -1,0 +1,32 @@
+import React from "react";
+import { UserTableHead } from "@/app/lib/constants/constants";
+import { UserActions } from "@/app/ui/users/UserActions";
+const UsersTable: React.FC = () => {
+  return (
+    <table className=" w-full tex-sm text-left  ">
+      <thead className="  ">
+        <tr>
+          <th className="py-2 px-4">{UserTableHead.USER}</th>
+          <th className="py-2 px-4">{UserTableHead.ID}</th>
+          <th className="py-2 px-4">{UserTableHead.ROLE}</th>
+          <th className="py-2 px-4">{UserTableHead.STATUS}</th>
+          <th className="py-2 px-4">{UserTableHead.JOINDED}</th>
+          <th className="py-2 px-4">{UserTableHead.ACTIONS}</th>
+        </tr>
+      </thead>
+      <tbody className="">
+        <tr className="">
+          <td className="py-2 px-4 ">anderson</td>
+          <td className="py-2 px-4 ">1234567</td>
+          <td className="py-2 px-4 ">user</td>
+          <td className="py-2 px-4 ">active</td>
+          <td className=" py-2 px-4 ">22 apr 2025</td>
+          {/* this tis the user buttons to modify user  */}
+          <UserActions />
+        </tr>
+      </tbody>
+    </table>
+  );
+};
+
+export default UsersTable;

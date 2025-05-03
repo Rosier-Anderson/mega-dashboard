@@ -10,3 +10,4 @@ export type DataType = {
   picture: string;
   payment: string;
 };
+

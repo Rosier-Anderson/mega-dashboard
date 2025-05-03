@@ -1,13 +1,11 @@
-
+import RecentSubscriptions from "../ui/dashboard /recentSubcriptions";
+import RecentUser from "../ui/dashboard /recentUser";
 import ActiveUsers from "../ui/dashboard /totalActiveUsers";
 import TotalCustomer from "../ui/dashboard /totalCustomer";
 import TotalRevenue from "../ui/dashboard /totalRevenue";
 import TotalSubscription from "../ui/dashboard /totalSuscription";
 
-
-export default async function Page() {
-  // const data = await fetchData();
-
+export default function Page() {
   return (
     <main className="flex flex-col h-full  w-full gap-3 bg-gray-900/80 text-gray-100  ">
       <div
@@ -15,14 +13,14 @@ export default async function Page() {
        shadow text-gray-200 flex items-center"
       >
         <h1 className="inline-block  px-3 text-lg md:text-sm font-bold ">
-          Dashboardas
+          Dashboard
         </h1>
       </div>
       <div className="flex flex-col gap-4 w-[96%] mx-auto lg:flex-row">
         <ActiveUsers />
-        <TotalSubscription/>
-        <TotalRevenue/>
-        <TotalCustomer/>
+        <TotalSubscription />
+        <TotalRevenue />
+        <TotalCustomer />
       </div>
       <div className="flex justify-between gap-4 w-[96%] h-auto  rounded-md mx-auto ">
         {" "}

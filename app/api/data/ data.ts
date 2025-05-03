@@ -1,4 +1,4 @@
-import {DataType } from "@/app/lib/definitions";
+import {DataType } from "@/app/lib/types/types";
 
 export const fetchData = async (): Promise<DataType[]> => {
     try {
