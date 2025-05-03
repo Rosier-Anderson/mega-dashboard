@@ -1,4 +1,4 @@
-import { fetchData } from "@/app/api/data/data";
+import { fetchData } from "@/app/api/data/ data";
 import { CreditCardIcon } from "@heroicons/react/24/outline";
 
 const TotalSubscription = async () => {

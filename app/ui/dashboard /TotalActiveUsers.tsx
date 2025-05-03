@@ -1,4 +1,4 @@
-import { fetchData } from "@/app/api/data/data";
+import { fetchData } from "@/app/api/data/ data";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
 import React from "react";
 

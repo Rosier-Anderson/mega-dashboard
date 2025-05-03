@@ -7,5 +7,6 @@ export type DataType = {
   active: boolean;
   amount: string;
   status: "Paid" | "Pending" | "Failed";
+  picture: string;
   payment: string;
 };
