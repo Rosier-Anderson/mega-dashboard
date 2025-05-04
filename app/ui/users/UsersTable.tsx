@@ -1,7 +1,8 @@
 import React from "react";
 import { UserTableHead } from "@/app/lib/constants/constants";
 import { UserActions } from "@/app/ui/users/UserActions";
-const UsersTable: React.FC = () => {
+import { UserListProps } from "@/app/lib/types/types";
+const UsersTable: React.FC<UserListProps> = ({ query, users }) => {
   return (
     <table className=" w-full tex-sm text-left  ">
       <thead className="  ">
