@@ -1,6 +1,6 @@
+import ActiveUsers from "../ui/dashboard /TotalActiveUsers";
 import RecentSubscriptions from "../ui/dashboard /recentSubcriptions";
 import RecentUser from "../ui/dashboard /recentUser";
-import ActiveUsers from "../ui/dashboard /totalActiveUsers";
 import TotalCustomer from "../ui/dashboard /totalCustomer";
 import TotalRevenue from "../ui/dashboard /totalRevenue";
 import TotalSubscription from "../ui/dashboard /totalSuscription";
@@ -25,7 +25,7 @@ export default function Page() {
       <div className="flex justify-between gap-4 w-[96%] h-auto  rounded-md mx-auto ">
         {" "}
         <RecentUser />
-      <RecentSubscriptions />
+        <RecentSubscriptions />
       </div>
     </main>
   );

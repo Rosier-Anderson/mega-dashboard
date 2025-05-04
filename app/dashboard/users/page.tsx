@@ -1,3 +1,4 @@
+import SearchUsers from "@/app/ui/users/SearchUsers";
 import UsersTable from "@/app/ui/users/UsersTable";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
 
@@ -7,12 +8,8 @@ export default function Page() {
       <div className="w-[96%] h-10 mx-auto bg-gray-700 rounded-md mt-4 shadow text-gray-200 flex items-center">
         <h1 className="px-3 text-lg font-bold">Users</h1>
       </div>
-       <div className="w-[96%] mx-auto flex justify-between items-center">
-        <input
-          className="bg-transparent border border-gray-400 outline-none w-72 h-10 p-2 rounded-md text-sm"
-          type="text"
-          placeholder="Search User..."
-        />
+      <div className="w-[96%] mx-auto flex justify-between items-center">
+        <SearchUsers />
         <button className="flex items-center justify-center gap-1 text-sm cursor-pointer w-32 h-10 bg-blue-400 rounded-md shadow">
           <UserPlusIcon className="w-4" />
           Add User
