@@ -1,10 +1,17 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 export default function SearchUsers() {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams);
-    console.log(term);
+    if (term) {
+      params.set("query", term);
+    } else {
+      params.delete("query");
+    }
+    replace(`${pathname}?${params.toString()}`);
   }
   return (
     <input
