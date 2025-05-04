@@ -3,7 +3,6 @@ export enum UserTableHead {
   ID = "ID",
   STATUS = "STATUS",
   ROLE = "ROLE",
-  JOINDED ="JOINDED",
-  ACTIONS = "ACTIONS"
-
+  JOINDED = "JOINDED",
+  ACTIONS = "ACTIONS",
 }

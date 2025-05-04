@@ -1,11 +1,7 @@
 "use client";
-
-import { fetchData } from "@/app/api/data/ data";
 import { useSearchParams } from "next/navigation";
-
 export default function SearchUsers() {
   const searchParams = useSearchParams();
-
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams);
     console.log(term);

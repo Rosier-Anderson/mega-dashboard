@@ -1,3 +1,5 @@
+import { UserTableHead } from "@/app/lib/constants/constants";
+import { SearchUsersParams } from "@/app/lib/types/types";
 import SearchUsers from "@/app/ui/users/SearchUsers";
 import UsersTable from "@/app/ui/users/UsersTable";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
