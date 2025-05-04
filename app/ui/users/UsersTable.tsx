@@ -16,15 +16,22 @@ const UsersTable: React.FC<UserListProps> = ({ query, users }) => {
         </tr>
       </thead>
       <tbody className="">
-        <tr className="">
-          <td className="py-2 px-4 ">anderson</td>
-          <td className="py-2 px-4 ">1234567</td>
-          <td className="py-2 px-4 ">user</td>
-          <td className="py-2 px-4 ">active</td>
-          <td className=" py-2 px-4 ">22 apr 2025</td>
-          {/* this tis the user buttons to modify user  */}
-          <UserActions />
-        </tr>
+        {users.map((user) => {
+          if (query.length === 0) {
+            return (
+              <tr key={user.id} className="">
+                <td className="py-2 px-4 ">{user.name}</td>
+                <td className="py-2 px-4 ">{user.id}</td>
+                <td className="py-2 px-4 ">user</td>
+                <td className="py-2 px-4 ">active</td>
+                <td className=" py-2 px-4 ">22 apr 2025</td>
+                <UserActions />
+              </tr>
+            );
+          }
+        })}
+
+        {/* this tis the user buttons to modify user  */}
       </tbody>
     </table>
   );
