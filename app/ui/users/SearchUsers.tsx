@@ -1,10 +1,12 @@
 "use client";
+import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 export default function SearchUsers() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
-  function handleSearch(term: string) {
+  const handleSearch = useDebouncedCallback((term) => {
+    console.log(term);
     const params = new URLSearchParams(searchParams);
     if (term) {
       params.set("query", term);
@@ -12,7 +14,8 @@ export default function SearchUsers() {
       params.delete("query");
     }
     replace(`${pathname}?${params.toString()}`);
-  }
+  }, 300);
+
   return (
     <input
       className="bg-transparent border border-gray-400 outline-none w-72 h-10 p-2 rounded-md text-sm"

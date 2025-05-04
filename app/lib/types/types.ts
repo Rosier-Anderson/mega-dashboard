@@ -10,12 +10,3 @@ export type DataType = {
   picture: string;
   payment: string;
 };
-
-export type SearchUsersParams = {
-  name: string;
-  id: number;
-  role: string;
-  date: string;
-  active: boolean;
-  action: string | undefined;
-};

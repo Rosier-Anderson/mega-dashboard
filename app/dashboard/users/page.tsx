@@ -1,10 +1,13 @@
 import { UserTableHead } from "@/app/lib/constants/constants";
-import { SearchUsersParams } from "@/app/lib/types/types";
 import SearchUsers from "@/app/ui/users/SearchUsers";
 import UsersTable from "@/app/ui/users/UsersTable";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
 
-export default function Page() {
+export default async function Page(props: {
+  searchParams: Promise<{ query?: string }>;
+}) {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || "";
   return (
     <main className="flex flex-col h-full  w-full gap-4 bg-gray-900/80 text-gray-100  ">
       <div className="w-[96%] h-10 mx-auto bg-gray-700 rounded-md mt-4 shadow text-gray-200 flex items-center">
