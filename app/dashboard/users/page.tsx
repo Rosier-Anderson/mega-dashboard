@@ -2,7 +2,11 @@ import { fetchData } from "@/app/api/data/ data";
 import { UserTableHead } from "@/app/lib/constants/constants";
 import SearchUsers from "@/app/ui/users/SearchUsers";
 import UsersTable from "@/app/ui/users/UsersTable";
-import { UserPlusIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  UserPlusIcon,
+} from "@heroicons/react/24/outline";
 
 export default async function Page(props: {
   searchParams: Promise<{ query?: string }>;
@@ -34,6 +38,20 @@ export default async function Page(props: {
 
       <div className="w-[96%] mx-auto bg-gray-700 rounded-md shadow ">
         <UsersTable query={query} users={Users} />
+      </div>
+      <div className="w-40 h-10 bg-gray-700 flex justify-center items-center rounded-lg mx-auto">
+        <div className="fel flex-col justify-between">
+          <div>
+            {" "}
+            <ArrowLeftIcon />
+          </div>
+
+          <div>1 2 3</div>
+          <div>
+            {" "}
+            <ArrowRightIcon />
+          </div>
+        </div>
       </div>
     </main>
   );

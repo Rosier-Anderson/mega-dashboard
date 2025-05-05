@@ -22,6 +22,7 @@ export default function SearchUsers() {
       type="text"
       placeholder="Search User..."
       onChange={(e) => handleSearch(e.target.value)}
+      defaultValue={searchParams.get("query")?.toString()}
     />
   );
 }
