@@ -1,5 +1,6 @@
 import { fetchData } from "@/app/api/data/ data";
 import { UserTableHead } from "@/app/lib/constants/constants";
+import Pagination from "@/app/ui/users/Pagination";
 import SearchUsers from "@/app/ui/users/SearchUsers";
 import UsersTable from "@/app/ui/users/UsersTable";
 import {
@@ -9,11 +10,15 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default async function Page(props: {
-  searchParams: Promise<{ query?: string }>;
+  searchParams: Promise<{ query?: string, page?: string }>;
 }) {
   const Users = await fetchData();
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
+  // because im not fetching from a database i need to setup ,anually the number of the currentPages
+  const totalPages = Number(searchParams?.page) || 1;
+
+
 
   return (
     <main className="flex flex-col h-full  w-full gap-4 bg-gray-900/80 text-gray-100  ">
@@ -41,18 +46,7 @@ export default async function Page(props: {
       </div>
       {/* adding pignation pages in  */}
 
-      <div className="w-100 h-10 bg-gray-700 flex justify-center items-center rounded-lg mx-auto">
-        <div className="w-full flex  justify-between ">
-          <div>
-            <ArrowLeftIcon />
-          </div>
-
-          <div>1 2 3</div>
-          <div>
-            <ArrowRightIcon />
-          </div>
-        </div>
-      </div>
+      <Pagination totalPages={totalPages} />
     </main>
   );
 }
