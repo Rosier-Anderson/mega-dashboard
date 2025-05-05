@@ -10,6 +10,7 @@ const UsersTable: React.FC<UserListProps> = ({ query, users }) => {
       : users.filter((user) =>
           user.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
         );
+        
 
   return (
     <table className=" w-full tex-sm text-left  ">

@@ -10,13 +10,13 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default async function Page(props: {
-  searchParams: Promise<{ query?: string, page?: string }>;
+  searchParams: Promise<{ query?: string,  }>;
 }) {
   const Users = await fetchData();
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
   // because im not fetching from a database i need to setup ,anually the number of the currentPages
-  const totalPages = Number(searchParams?.page) || 1;
+
 
 
 
@@ -46,7 +46,7 @@ export default async function Page(props: {
       </div>
       {/* adding pignation pages in  */}
 
-      <Pagination totalPages={totalPages} />
+      <Pagination  />
     </main>
   );
 }
