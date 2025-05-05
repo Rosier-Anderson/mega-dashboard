@@ -39,16 +39,16 @@ export default async function Page(props: {
       <div className="w-[96%] mx-auto bg-gray-700 rounded-md shadow ">
         <UsersTable query={query} users={Users} />
       </div>
-      <div className="w-40 h-10 bg-gray-700 flex justify-center items-center rounded-lg mx-auto">
-        <div className="fel flex-col justify-between">
+      {/* adding pignation pages in  */}
+
+      <div className="w-100 h-10 bg-gray-700 flex justify-center items-center rounded-lg mx-auto">
+        <div className="w-full flex  justify-between ">
           <div>
-            {" "}
             <ArrowLeftIcon />
           </div>
 
           <div>1 2 3</div>
           <div>
-            {" "}
             <ArrowRightIcon />
           </div>
         </div>
