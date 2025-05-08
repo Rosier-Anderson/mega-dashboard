@@ -4,7 +4,7 @@ import { UserActions } from "@/app/ui/users/UserActions";
 import { UserListProps } from "@/app/lib/types/types";
 const UsersTable: React.FC<UserListProps> = ({ query, users }) => {
   // Slice the array starting from index 25
-  let defaultUsers =
+  const defaultUsers =
     query.length === 0
       ? users.slice(25)
       : users.filter((user) =>

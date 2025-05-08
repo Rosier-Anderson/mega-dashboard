@@ -1,11 +1,8 @@
 import { fetchData } from "@/app/api/data/ data";
-import { UserTableHead } from "@/app/lib/constants/constants";
 import Pagination from "@/app/ui/users/Pagination";
 import SearchUsers from "@/app/ui/users/SearchUsers";
 import UsersTable from "@/app/ui/users/UsersTable";
 import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/outline";
 
@@ -15,7 +12,7 @@ export default async function Page(props: {
   const Users = await fetchData();
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
-  // because im not fetching from a database i need to setup ,anually the number of the currentPages
+   const totalPages = Users.length / 6;
 
 
 
@@ -46,7 +43,7 @@ export default async function Page(props: {
       </div>
       {/* adding pignation pages in  */}
 
-      <Pagination  />
+      <Pagination totalPages={totalPages} />
     </main>
   );
 }

@@ -1,13 +1,16 @@
 'use client'
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
-import { pages } from "next/dist/build/templates/app-page";
-import { usePathname, useSearchParams } from "next/navigation";
+// import { pages } from "next/dist/build/templates/app-page";
+import { useSearchParams } from "next/navigation";
 
-export default function Pagination() {
-const pathname = usePathname();
+export default function Pagination({totalPages}: {totalPages: number}) {
+const paginationTotals = totalPages;
+console.log(paginationTotals)
+// const pathname = usePathname();
 const searchParams = useSearchParams()
+console.log(searchParams.get('page'))
 const currentPage = Number(searchParams.get('page')) || 1;
-console.log(searchParams.getAll("page").toString())
+// console.log(searchParams.getAll("page").toString())
 
 // const currentPageURL = (pageNumber: number | string) => {
 //   for(let i: number ; i <= pageNumber; i++){
