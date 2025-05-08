@@ -2,20 +2,15 @@ import { fetchData } from "@/app/api/data/ data";
 import Pagination from "@/app/ui/users/Pagination";
 import SearchUsers from "@/app/ui/users/SearchUsers";
 import UsersTable from "@/app/ui/users/UsersTable";
-import {
-  UserPlusIcon,
-} from "@heroicons/react/24/outline";
+import { UserPlusIcon } from "@heroicons/react/24/outline";
 
 export default async function Page(props: {
-  searchParams: Promise<{ query?: string,  }>;
+  searchParams: Promise<{ query?: string }>;
 }) {
   const Users = await fetchData();
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
-   const totalPages = Users.length / 6;
-
-
-
+  const totalPages = Users.length / 6;
 
   return (
     <main className="flex flex-col h-full  w-full gap-4 bg-gray-900/80 text-gray-100  ">
