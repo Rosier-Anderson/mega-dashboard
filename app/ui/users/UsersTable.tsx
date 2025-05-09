@@ -1,16 +1,11 @@
 import React from "react";
 import { UserTableHead } from "@/app/lib/constants/constants";
 import { UserActions } from "@/app/ui/users/UserActions";
-import { UserListProps } from "@/app/lib/types/types";
-const UsersTable: React.FC<UserListProps> = ({ query, users }) => {
+import { DataType, UserListProps } from "@/app/lib/types/types";
+function UsersTable(users: DataType) {
   // Slice the array starting from index 25
-  const defaultUsers =
-    query.length === 0
-      ? users.slice(25)
-      : users.filter((user) =>
-          user.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
-        );
-        
+  const some = [users];
+  console.log(typeof some);
 
   return (
     <table className=" w-full tex-sm text-left  ">
@@ -25,7 +20,7 @@ const UsersTable: React.FC<UserListProps> = ({ query, users }) => {
         </tr>
       </thead>
       <tbody className="">
-        {defaultUsers.map((user) => {
+        {/* {some.map((user) => {
           return (
             <tr key={user.id}>
               <td className="py-2 px-4">{user.name}</td>
@@ -38,10 +33,10 @@ const UsersTable: React.FC<UserListProps> = ({ query, users }) => {
               <UserActions />
             </tr>
           );
-        })}
+        })} */}
       </tbody>
     </table>
   );
-};
+}
 
 export default UsersTable;

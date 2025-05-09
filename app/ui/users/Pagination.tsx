@@ -1,24 +1,30 @@
 "use client";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 // import { pages } from "next/dist/build/templates/app-page";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export default function Pagination({ totalPages }: { totalPages: number }) {
-  const toatlaPaginations = totalPages;
-  const paginationsArr = new Array(toatlaPaginations);
-
-
+  const paginationsArr = Array.from(
+    { length: totalPages },
+    (_, toatlaPaginations) => toatlaPaginations + 1
+  );
+  // this code here might be usfull ib the future
   // const pathname = usePathname();
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
 
-  const currentPage = Number(searchParams.get("page")) || 1;
-  const paginiNum = () => {
-    let countPaginations: number;
-for (countPaginations = 0; countPaginations < paginationsArr.length; countPaginations++) {
-  return countPaginations
-}
-  }
-  console.log(paginiNum())
+  // const currentPage = Number(searchParams.get("page")) || 1;
+  // const paginiNum = () => {
+  //   let countPaginations: number;
+  //   for (
+  //     countPaginations = 1;
+  //     countPaginations < paginationsArr.length;
+  //     countPaginations++
+  //   ) {
+  //     return countPaginations;
+  //   }
+  //   console.log(countPaginations);
+  // };
+  // console.log(paginiNum());
   // console.log(searchParams.getAll("page").toString())
 
   // const currentPageURL = (pageNumber: number | string) => {
@@ -35,10 +41,13 @@ for (countPaginations = 0; countPaginations < paginationsArr.length; countPagina
           <ArrowLeftIcon className="w-6" />
         </div>
         <div className="  flex gap-1 ">
-          {paginationsArr.filter(() => {
+          {paginationsArr.map((val) => {
             return (
-              <button className="bg-gray-600 w-10 h-full cursor-pointer">
-                
+              <button 
+                key={val}
+                className="bg-gray-600 w-10 h-full cursor-pointer"
+              >
+                {val}
               </button>
             );
           })}

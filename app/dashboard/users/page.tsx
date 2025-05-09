@@ -7,11 +7,18 @@ import { UserPlusIcon } from "@heroicons/react/24/outline";
 export default async function Page(props: {
   searchParams: Promise<{ query?: string }>;
 }) {
-  const Users = await fetchData();
+  const Users = await  fetch('https://retoolapi.dev/rdy8zr/data?_page=1&_limit=5');
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
-  const totalPages = Users.length / 6;
+  const totalPages = 3;
+  const itemsPerPage = 6;
 
+  const defaultUsers =
+    query.length === 0
+      ? Users.slice(0, itemsPerPage) // First 25 users if query is empty
+      : Users.filter((user) =>
+          user.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+        );
   return (
     <main className="flex flex-col h-full  w-full gap-4 bg-gray-900/80 text-gray-100  ">
       <div className="w-[96%] h-10 mx-auto bg-gray-700 rounded-md mt-4 shadow text-gray-200 flex items-center">
@@ -24,17 +31,9 @@ export default async function Page(props: {
           Add User
         </button>
       </div>
-      <div
-        className="w-[96%] h-10 mx-auto bg-gray-700  rounded-md mt-4
-            shadow text-gray-200 flex items-center"
-      >
-        <h1 className="inline-block  px-3 text-lg md:text-sm font-bold ">
-          Users
-        </h1>
-      </div>
 
       <div className="w-[96%] mx-auto bg-gray-700 rounded-md shadow ">
-        <UsersTable query={query} users={Users} />
+        <UsersTable users={defaultUsers} />
       </div>
       {/* adding pignation pages in  */}
 
