@@ -1,6 +1,7 @@
-import ActiveUsers from "../ui/dashboard /TotalActiveUsers";
+
 import RecentSubscriptions from "../ui/dashboard /recentSubcriptions";
 import RecentUser from "../ui/dashboard /recentUser";
+import ActiveUsers from "../ui/dashboard /totalActiveUsers";
 
 import TotalCustomer from "../ui/dashboard /totalCustomer";
 import TotalRevenue from "../ui/dashboard /totalRevenue";

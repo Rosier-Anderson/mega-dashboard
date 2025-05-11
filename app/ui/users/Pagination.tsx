@@ -1,38 +1,31 @@
 "use client";
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
-// import { pages } from "next/dist/build/templates/app-page";
-import { usePathname, useSearchParams } from "next/navigation";
+
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
+
 
 export default function Pagination({ totalPages }: { totalPages: number }) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+const {replace} = useRouter()
+  function hadleCilck(e: number) {
+    const params = new URLSearchParams(searchParams);
+    if (e) {
+      params.set("page", e.toString());
+    
+    }else{
+      params.delete('page')
+    }
+    replace(`${pathname}?${params}`)
+  }
+
+ 
+
   const paginationsArr = Array.from(
     { length: totalPages },
     (_, toatlaPaginations) => toatlaPaginations + 1
   );
-  // this code here might be usfull ib the future
-  // const pathname = usePathname();
-  // const searchParams = useSearchParams();
-
-  // const currentPage = Number(searchParams.get("page")) || 1;
-  // const paginiNum = () => {
-  //   let countPaginations: number;
-  //   for (
-  //     countPaginations = 1;
-  //     countPaginations < paginationsArr.length;
-  //     countPaginations++
-  //   ) {
-  //     return countPaginations;
-  //   }
-  //   console.log(countPaginations);
-  // };
-  // console.log(paginiNum());
-  // console.log(searchParams.getAll("page").toString())
-
-  // const currentPageURL = (pageNumber: number | string) => {
-  //   for(let i: number ; i <= pageNumber; i++){
-
-  //   }
-  // let arr: (string | number)[] = [];
-  // return arr.push(pageNumber)
+  // console.log(paginationsArr)
   // }
   return (
     <div className="w-50 h-10 bg-gray-700 flex justify-center items-center rounded-lg mx-auto">
@@ -43,7 +36,11 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
         <div className="  flex gap-1 ">
           {paginationsArr.map((val) => {
             return (
-              <button 
+              <button
+                value={val}
+                onClick={(e) =>
+                  hadleCilck(Number((e.target as HTMLButtonElement).value))
+                }
                 key={val}
                 className="bg-gray-600 w-10 h-full cursor-pointer"
               >

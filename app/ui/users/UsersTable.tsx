@@ -1,11 +1,10 @@
 import React from "react";
 import { UserTableHead } from "@/app/lib/constants/constants";
 import { UserActions } from "@/app/ui/users/UserActions";
-import { DataType, UserListProps } from "@/app/lib/types/types";
-function UsersTable(users: DataType) {
+import { UserListProps } from "@/app/lib/types/types";
+const UsersTable: React.FC<UserListProps> = ({  users }) => {
   // Slice the array starting from index 25
-  const some = [users];
-  console.log(typeof some);
+ 
 
   return (
     <table className=" w-full tex-sm text-left  ">
@@ -20,7 +19,7 @@ function UsersTable(users: DataType) {
         </tr>
       </thead>
       <tbody className="">
-        {/* {some.map((user) => {
+        {users.map((user) => {
           return (
             <tr key={user.id}>
               <td className="py-2 px-4">{user.name}</td>
@@ -33,10 +32,10 @@ function UsersTable(users: DataType) {
               <UserActions />
             </tr>
           );
-        })} */}
+        })}
       </tbody>
     </table>
   );
-}
+};
 
 export default UsersTable;

@@ -3,7 +3,7 @@ import { useDebouncedCallback } from "use-debounce";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 export default function SearchUsers() {
   const searchParams = useSearchParams();
-  console.log(searchParams.get('page'))
+ 
   const pathname = usePathname();
   const { replace } = useRouter();
   const handleSearch = useDebouncedCallback((term) => {

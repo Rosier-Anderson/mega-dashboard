@@ -11,5 +11,6 @@ export type DataType = {
   payment: string;
 };
 export type UserListProps = {
+
   users: DataType[];
 };

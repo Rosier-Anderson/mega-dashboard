@@ -1,24 +1,28 @@
-import { fetchData } from "@/app/api/data/ data";
+// import { fetchData } from "@/app/api/data/ data";
+import FetchPaginationData from "@/app/api/data/paginationData";
 import Pagination from "@/app/ui/users/Pagination";
 import SearchUsers from "@/app/ui/users/SearchUsers";
 import UsersTable from "@/app/ui/users/UsersTable";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
 
 export default async function Page(props: {
-  searchParams: Promise<{ query?: string }>;
+  searchParams: Promise<{ query?: string, page?: string | number }>;
 }) {
-  const Users = await  fetch('https://retoolapi.dev/rdy8zr/data?_page=1&_limit=5');
   const searchParams = await props.searchParams;
   const query = searchParams?.query || "";
-  const totalPages = 3;
-  const itemsPerPage = 6;
+  const pageNumber = searchParams?.page || 1;
 
-  const defaultUsers =
-    query.length === 0
-      ? Users.slice(0, itemsPerPage) // First 25 users if query is empty
-      : Users.filter((user) =>
-          user.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
-        );
+
+
+
+  //  const arrayPagiante: number[] = [0, 6, 12,18, 24,30];
+// const pageCount = arrayPagiante[Number(pageNumber)]
+  const Users = await FetchPaginationData(query, Number(pageNumber));
+
+  const itemsPerPage = Math.ceil(3);
+  const totalPages = itemsPerPage;
+  console.log(Math.ceil(itemsPerPage));
+
   return (
     <main className="flex flex-col h-full  w-full gap-4 bg-gray-900/80 text-gray-100  ">
       <div className="w-[96%] h-10 mx-auto bg-gray-700 rounded-md mt-4 shadow text-gray-200 flex items-center">
@@ -33,7 +37,7 @@ export default async function Page(props: {
       </div>
 
       <div className="w-[96%] mx-auto bg-gray-700 rounded-md shadow ">
-        <UsersTable users={defaultUsers} />
+        <UsersTable  users={Users} />
       </div>
       {/* adding pignation pages in  */}
 
