@@ -8,10 +8,10 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 const {replace} = useRouter()
-  function hadleCilck(e: number) {
+  function hadleCilck(value: number) {
     const params = new URLSearchParams(searchParams);
-    if (e) {
-      params.set("page", e.toString());
+    if (value) {
+      params.set("page", value.toString());
     
     }else{
       params.delete('page')

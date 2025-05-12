@@ -25,6 +25,9 @@ export type ImageHost = typeof imageHosts[number];
 // next.config.js
 
 const nextConfig = {
+  experimental: {
+    ppr: 'incremental'
+  },
   images: {
     domains: [...imageHosts],
   },

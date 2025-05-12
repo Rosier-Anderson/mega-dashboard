@@ -6,22 +6,22 @@ import UsersTable from "@/app/ui/users/UsersTable";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
 
 export default async function Page(props: {
-  searchParams: Promise<{ query?: string, page?: string | number }>;
+  searchParams: { query?: string; page?: string | number };
 }) {
-  const searchParams = await props.searchParams;
+  
+  const searchParams = props.searchParams;
   const query = searchParams?.query || "";
-  const pageNumber = searchParams?.page || 1;
+  const page = searchParams?.page || 1;
+const limit = query ? 6  : 30;
+ 
+
+  const Users = await FetchPaginationData(query, Number(page), 6);
+   const offset = (Number(page)- 1) * limit;
+const fakeUsers = Users.slice(offset, offset + limit);
+  const itemsPerPage = Math.ceil(Users.length / limit);
 
 
-
-
-  //  const arrayPagiante: number[] = [0, 6, 12,18, 24,30];
-// const pageCount = arrayPagiante[Number(pageNumber)]
-  const Users = await FetchPaginationData(query, Number(pageNumber));
-
-  const itemsPerPage = Math.ceil(3);
   const totalPages = itemsPerPage;
-  console.log(Math.ceil(itemsPerPage));
 
   return (
     <main className="flex flex-col h-full  w-full gap-4 bg-gray-900/80 text-gray-100  ">
@@ -37,7 +37,7 @@ export default async function Page(props: {
       </div>
 
       <div className="w-[96%] mx-auto bg-gray-700 rounded-md shadow ">
-        <UsersTable  users={Users} />
+        <UsersTable users={fakeUsers} />
       </div>
       {/* adding pignation pages in  */}
 
