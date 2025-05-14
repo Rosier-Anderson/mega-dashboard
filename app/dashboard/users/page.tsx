@@ -1,30 +1,32 @@
 // import { fetchData } from "@/app/api/data/ data";
-import FetchPaginationData from "@/app/api/data/paginationData";
+import { fetchData } from "@/app/api/data/ data";
+
 import Pagination from "@/app/ui/users/Pagination";
 import SearchUsers from "@/app/ui/users/SearchUsers";
 import UsersTable from "@/app/ui/users/UsersTable";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
 
-export default async function Page(props: {
-  searchParams: { query: string; page: string | number };
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { query?: string; page?: string | number };
 }) {
-  const { searchParams } = props;
-  const query = (await searchParams).query || "";
-  const page = Number((await searchParams).page);
+ 
+  const query = searchParams.query || "";
+  const page = Number(searchParams.page) || 1;
   const offset = (Number(page) - 1) * 6;
   const limit = 6;
   //   i dont need to use this pagination fetch data ill get the first data and use it like the first one
-  const Users = await FetchPaginationData(
-    query.length == 0 ? 1 : Number(page),
-    query.length == 0 ? 30 : limit,
-    query
-  );
+  const allUsers = await fetchData()
 
-  console.log(Users.length);
-  const fakeUsers = Users.slice(offset, offset + 6);
-
+  
+  // const  allUsers = Users.length == 30 ? Users : ,,
+  const fakeUsers = query.length == 0 ?  allUsers.slice(offset, offset + 6) :  allUsers.filter((user) =>
+       user.name.toLowerCase().includes(query.toLowerCase()));
+  // const Anie = query ? fakeUsers.length;
+const newArr = query.length !== 0 ? fakeUsers.slice(offset, offset + 6): [];
   const itemsPerPage = Math.ceil(
-    Users.length == 30 ? Users.length / 6 : fakeUsers.length / 6
+    query.length == 0 ? allUsers.length / 6 : fakeUsers.length / 6
   );
 
   return (
@@ -41,7 +43,7 @@ export default async function Page(props: {
       </div>
 
       <div className="w-[96%] mx-auto bg-gray-700 rounded-md shadow ">
-        <UsersTable users={Users.length == 30 ? fakeUsers : Users} />
+        <UsersTable users={newArr.length !== 0? newArr : fakeUsers } />
       </div>
       {/* adding pignation pages in  */}
 
