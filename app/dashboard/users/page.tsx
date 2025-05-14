@@ -6,22 +6,26 @@ import UsersTable from "@/app/ui/users/UsersTable";
 import { UserPlusIcon } from "@heroicons/react/24/outline";
 
 export default async function Page(props: {
-  searchParams: { query?: string; page?: string | number };
+  searchParams: { query: string; page: string | number };
 }) {
-  
-  const searchParams = props.searchParams;
-  const query = searchParams?.query || "";
-  const page = searchParams?.page || 1;
-const limit = query ? 6  : 30;
- 
+  const { searchParams } = props;
+  const query = (await searchParams).query || "";
+  const page = Number((await searchParams).page);
+  const offset = (Number(page) - 1) * 6;
+  const limit = 6;
+  //   i dont need to use this pagination fetch data ill get the first data and use it like the first one
+  const Users = await FetchPaginationData(
+    query.length == 0 ? 1 : Number(page),
+    query.length == 0 ? 30 : limit,
+    query
+  );
 
-  const Users = await FetchPaginationData(query, Number(page), 6);
-   const offset = (Number(page)- 1) * limit;
-const fakeUsers = Users.slice(offset, offset + limit);
-  const itemsPerPage = Math.ceil(Users.length / limit);
+  console.log(Users.length);
+  const fakeUsers = Users.slice(offset, offset + 6);
 
-
-  const totalPages = itemsPerPage;
+  const itemsPerPage = Math.ceil(
+    Users.length == 30 ? Users.length / 6 : fakeUsers.length / 6
+  );
 
   return (
     <main className="flex flex-col h-full  w-full gap-4 bg-gray-900/80 text-gray-100  ">
@@ -37,11 +41,11 @@ const fakeUsers = Users.slice(offset, offset + limit);
       </div>
 
       <div className="w-[96%] mx-auto bg-gray-700 rounded-md shadow ">
-        <UsersTable users={fakeUsers} />
+        <UsersTable users={Users.length == 30 ? fakeUsers : Users} />
       </div>
       {/* adding pignation pages in  */}
 
-      <Pagination totalPages={totalPages} />
+      <Pagination totalPages={itemsPerPage} />
     </main>
   );
 }

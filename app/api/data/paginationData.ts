@@ -1,15 +1,11 @@
 import { DataType } from "@/app/lib/types/types";
 
 export default async function FetchPaginationData(
-  query: string,
+
   page: number,
-  limit: number,
- 
-
+  limit: number,  query?: string,
 ): Promise<DataType[]> {
-
   try {
-
     const response = await fetch(
       `https://retoolapi.dev/rdy8zr/data?_page=${page}&_limit=${limit}`
     );

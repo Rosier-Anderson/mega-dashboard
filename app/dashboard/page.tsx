@@ -19,7 +19,7 @@ export default function Page() {
         </h1>
       </div>
       <div className="flex flex-col gap-4 w-[96%] mx-auto lg:flex-row">
-        <ActiveUsers />
+        <ActiveUsers   />
         <TotalSubscription />
         <TotalRevenue />
         <TotalCustomer />
