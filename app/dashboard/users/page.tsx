@@ -19,7 +19,7 @@ export default async function Page({
   //   i dont need to use this pagination fetch data ill get the first data and use it like the first one
   const allUsers = await fetchData()
 
-  
+  console.log(allUsers.length)
   // const  allUsers = Users.length == 30 ? Users : ,,
   const fakeUsers = query.length == 0 ?  allUsers.slice(offset, offset + 6) :  allUsers.filter((user) =>
        user.name.toLowerCase().includes(query.toLowerCase()));
