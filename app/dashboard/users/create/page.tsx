@@ -8,6 +8,7 @@ export default async  function Page (){
 
     return (
         <main>
+            <h1>this is the form user </h1>
 <Form user={Users} />
         </main>
     )
