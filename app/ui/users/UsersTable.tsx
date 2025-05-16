@@ -1,7 +1,8 @@
 import React from "react";
 import { UserTableHead } from "@/app/lib/constants/constants";
 import { UserActions } from "@/app/ui/users/UserActions";
-import { UserListProps } from "@/app/lib/types/types";
+import { UserListProps } from "@/app/lib/definitions";
+
 const UsersTable: React.FC<UserListProps> = ({  users }) => {
   // Slice the array starting from index 25
  
@@ -29,7 +30,7 @@ const UsersTable: React.FC<UserListProps> = ({  users }) => {
                 {user.active ? "Active" : "Inactive"}
               </td>
               <td className="py-2 px-4">{user.plan}</td>
-              <UserActions />
+              <UserActions id={user.id}/>
             </tr>
           );
         })}
